@@ -49,14 +49,6 @@ Copie `server/.env.example` para `server/.env` e preencha:
 - `CLOUDINARY_*` — para upload de foto de perfil e portfólio
 - `SMTP_*` — para envio do link de redefinição de senha
 
-### Frontend (`client/.env.local`)
-
-```
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
-NEXT_PUBLIC_SOCKET_URL=http://localhost:5000
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-```
-
 ## Executar em desenvolvimento
 
 Dois terminais:
@@ -68,9 +60,6 @@ cd server && npm run dev
 ```bash
 cd client && npm run dev
 ```
-
-- Site: [http://localhost:3000](http://localhost:3000)
-- API: [http://localhost:5000/api/health](http://localhost:5000/api/health)
 
 ## Build de produção
 
