@@ -1,83 +1,101 @@
-# Trampei
+# Trampei — Conectando talentos e oportunidades
 
-Plataforma web brasileira para conectar quem precisa de serviços freelance com profissionais locais.
+A Brazilian web platform designed to seamlessly connect individuals and businesses looking for freelance services with skilled local professionals.
 
-**Slogan:** Trampei — conectando talentos e oportunidades.
+## 🚀 Key Features
 
-## Stack
+*   **Authentication & Security:** Secure signup, login, JWT handling (cookies + headers), password recovery, Helmet, and rate limiting.
+*   **Professional Profiles:** Dedicated portfolios, custom skill tags, real-time availability tracking, and past project showcases.
+*   **Service Feed:** Advanced categorization, filtering, and an infinite scroll feed that automatically removes completed jobs.
+*   **Unified Search:** Smart search engine equipped with dynamic queries and instant suggestions.
+*   **Real-Time Communication:** Integrated live chat powered by Socket.io along with direct WhatsApp click-to-chat links (`wa.me`).
+*   **Reviews & Ratings:** Mutual feedback and evaluation system after job completion.
+*   **Modern UI/UX:** Interactive dashboard, location and tag-based recommendations, dark mode toggle, skeleton loaders, and responsive notifications.
 
-| Camada | Tecnologias |
-|--------|-------------|
-| Frontend | React 19, Next.js 16, Tailwind CSS 4, Framer Motion, Axios, react-hot-toast, next-themes, socket.io-client |
-| Backend | Node.js, Express 5, MongoDB (Mongoose), JWT, bcryptjs, Socket.io, Cloudinary, Helmet, rate limit |
+## 🛠️ Tech Stack
 
-## Estrutura
+### Frontend
+*   React 19 & Next.js 16 (App Router)
+*   Tailwind CSS 4 & Framer Motion
+*   Axios & Socket.io-client
+*   React-hot-toast & Next-themes
 
-```
+### Backend
+*   Node.js & Express 5
+*   MongoDB & Mongoose
+*   JWT & Bcryptjs
+*   Socket.io & Cloudinary
+*   Helmet & Express Rate Limit
+
+## 📁 Project Structure
+
+```text
 trampei/
-├── client/          # Next.js (App Router)
-│   ├── app/         # Páginas e rotas
-│   ├── components/
-│   ├── context/
-│   └── lib/
-└── server/          # API REST + WebSocket
+├── client/              # Next.js Frontend (App Router)
+│   ├── app/             # Pages and routing
+│   ├── components/      # UI Elements
+│   ├── context/         # Global state management
+│   └── lib/             # Helper utilities
+└── server/              # REST API + WebSocket Backend
     └── src/
-        ├── config/
-        ├── controllers/
-        ├── middlewares/
-        ├── models/
-        ├── routes/
-        └── sockets/
+        ├── config/      # Database & third-party configs
+        ├── controllers/ # Request handlers
+        ├── middlewares/ # Security & validation filters
+        ├── models/      # MongoDB Schemas
+        ├── routes/      # API Endpoints
+        └── sockets/     # Real-time events
 ```
 
-## Pré-requisitos
+## ⚙️ Prerequisites
 
-- Node.js 20+
-- Conta [MongoDB Atlas](https://www.mongodb.com/atlas) (ou MongoDB local)
-- (Opcional) [Cloudinary](https://cloudinary.com/) para upload de imagens
-- (Opcional) SMTP para e-mails de recuperação de senha
+*   **Node.js** 20+
+*   **MongoDB** Atlas account (or a local MongoDB instance)
+*   **Cloudinary** account for profile and portfolio image uploads *(Optional)*
+*   **SMTP Service** for password recovery emails *(Optional)*
 
-## Configuração
+## 🔧 Environment Configuration
 
-### Backend (`server/.env`)
+1. Navigate to the backend directory: `cd server`
+2. Duplicate the environment template: `cp .env.example .env`
+3. Populate your `.env` file with the required credentials:
 
-Copie `server/.env.example` para `server/.env` e preencha:
+```env
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_strong_production_secret
+CLIENT_URL=http://localhost:3000
+CLOUDINARY_URL=your_cloudinary_credentials
+SMTP_HOST=your_smtp_host
+```
 
-- `MONGODB_URI` — string de conexão MongoDB
-- `JWT_SECRET` — segredo forte em produção
-- `CLIENT_URL` — URL do frontend (ex.: `http://localhost:3000`)
-- `CLOUDINARY_*` — para upload de foto de perfil e portfólio
-- `SMTP_*` — para envio do link de redefinição de senha
+## 💻 Getting Started
 
-## Executar em desenvolvimento
+### Development Mode
+Open two separate terminals and execute the following commands:
 
-Dois terminais:
-
+**Terminal 1 (Backend):**
 ```bash
-cd server && npm run dev
+cd server
+npm run dev
 ```
 
+**Terminal 2 (Frontend):**
 ```bash
-cd client && npm run dev
+cd client
+npm run dev
 ```
 
-## Build de produção
+### Production Build
+To build and run the application for a production environment:
 
+**Frontend:**
 ```bash
-cd client && npm run build && npm start
-cd server && npm start
+cd client
+npm run build
+npm start
 ```
 
-## Funcionalidades principais
-
-- Autenticação (cadastro, login, JWT em cookie + header, recuperação de senha)
-- Perfil profissional, portfólio, tags, disponibilidade, trabalhos realizados
-- Serviços com categorias, filtros, feed com scroll infinito, status (concluídos saem do feed)
-- Busca unificada com sugestões
-- Chat em tempo real (Socket.io) e contato via WhatsApp (`wa.me`)
-- Avaliações após serviço concluído
-- Dashboard, recomendações (tags + localização), modo escuro, skeletons, toasts, página 404
-
-## Licença
-
-MIT
+**Backend:**
+```bash
+cd server
+npm start
+```
